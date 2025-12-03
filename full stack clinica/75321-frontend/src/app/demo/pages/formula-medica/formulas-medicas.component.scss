@@ -1,0 +1,431 @@
+.formulas-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    h2 {
+      color: #2c3e50;
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
+
+  // SPINNER DE CARGA
+  .spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+    .spinner-container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 20px;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #4CAF50;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      p {
+        color: #555;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  // BOTONES
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.btn-primary {
+      background-color: #4CAF50;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: #45a049;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+      }
+    }
+
+    &.btn-secondary {
+      background-color: #757575;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: #616161;
+      }
+    }
+
+    &.btn-lg {
+      padding: 14px 28px;
+      font-size: 16px;
+    }
+  }
+
+  .btn-crear {
+    @extend .btn;
+    @extend .btn-primary;
+    font-size: 15px;
+  }
+
+  .btn-accion {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 8px 12px;
+    transition: all 0.2s;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.15);
+    }
+  }
+
+  // FORMULARIO
+  .formulario-container {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    form {
+      .form-group {
+        margin-bottom: 22px;
+
+        label {
+          display: block;
+          margin-bottom: 8px;
+          color: #2c3e50;
+          font-weight: 500;
+          font-size: 14px;
+
+          .obligatorio {
+            color: #e74c3c;
+            margin-left: 2px;
+          }
+        }
+
+        .form-control {
+          width: 100%;
+          padding: 12px 15px;
+          border: 2px solid #ddd;
+          border-radius: 6px;
+          font-size: 14px;
+          font-family: inherit;
+          box-sizing: border-box;
+          transition: all 0.3s ease;
+          background-color: white;
+
+          &:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+          }
+
+          &.invalid {
+            border-color: #e74c3c;
+
+            &:focus {
+              border-color: #e74c3c;
+              box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+            }
+          }
+
+          &:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+            color: #6c757d;
+          }
+        }
+
+        textarea.form-control {
+          resize: vertical;
+          min-height: 100px;
+        }
+
+        .error-message {
+          display: block;
+          color: #e74c3c;
+          font-size: 12px;
+          margin-top: 5px;
+          font-weight: 500;
+        }
+
+        .help-text {
+          display: block;
+          color: #7f8c8d;
+          font-size: 12px;
+          margin-top: 5px;
+          font-style: italic;
+        }
+
+        .char-counter {
+          display: block;
+          text-align: right;
+          color: #7f8c8d;
+          font-size: 11px;
+          margin-top: 4px;
+        }
+      }
+
+      .form-buttons {
+        display: flex;
+        gap: 12px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 2px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  // BANNER INFORMATIVO
+  .info-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    .contador {
+      color: white;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      strong {
+        font-size: 18px;
+      }
+    }
+  }
+
+  // TABLA
+  .tabla-responsive {
+    overflow-x: auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+
+    thead {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+
+      th {
+        padding: 16px 12px;
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        &.text-center {
+          text-align: center;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        transition: all 0.2s;
+
+        &:nth-child(even) {
+          background-color: #f8f9fa;
+        }
+
+        &:hover {
+          background-color: #e8f5e9;
+          transform: scale(1.01);
+        }
+
+        td {
+          padding: 14px 12px;
+          border-bottom: 1px solid #dee2e6;
+          font-size: 13px;
+
+          &.text-center {
+            text-align: center;
+          }
+
+          .info-celda {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            strong {
+              color: #2c3e50;
+              font-size: 14px;
+            }
+
+            small {
+              color: #7f8c8d;
+              font-size: 11px;
+            }
+          }
+
+          &.indicaciones-cell {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: #4CAF50;
+            color: white;
+
+            &.badge-secondary {
+              background-color: #6c757d;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // SIN DATOS
+  .sin-datos {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 12px;
+    color: #555;
+
+    .sin-datos-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+
+    h3 {
+      margin: 0 0 10px 0;
+      color: #2c3e50;
+      font-size: 24px;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #7f8c8d;
+    }
+  }
+}
+
+// RESPONSIVE
+@media (max-width: 768px) {
+  .formulas-container {
+    padding: 15px;
+
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+
+      h2 {
+        text-align: center;
+        font-size: 22px;
+      }
+
+      .btn-crear {
+        width: 100%;
+      }
+    }
+
+    .formulario-container {
+      padding: 20px;
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+
+    table {
+      font-size: 11px;
+
+      th, td {
+        padding: 8px;
+      }
+
+      .info-celda {
+        small {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .sin-datos {
+      padding: 40px 20px;
+
+      .sin-datos-icon {
+        font-size: 60px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+  }
+}

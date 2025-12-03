@@ -1,0 +1,120 @@
+2025-09-11 19:09:55,569 - INFO - Iniciando ETL por bloques...
+2025-09-11 19:09:55,827 - ERROR - Error en el ETL: [Errno 2] No such file or directory: '../SECOP_II_Procesos_de_Contratacion.csv'
+Traceback (most recent call last):
+  File "c:\Users\camil\mi_proyecto_secop\fase4\etl_script.py", line 204, in main
+    for i, chunk in enumerate(pd.read_csv(FILE_PATH, chunksize=CHUNK_SIZE, low_memory=False)):
+                              ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: '../SECOP_II_Procesos_de_Contratacion.csv'
+2025-09-11 19:11:49,991 - INFO - Iniciando ETL por bloques...
+2025-09-11 19:11:50,120 - ERROR - Error en el ETL: [Errno 2] No such file or directory: '../SECOP_II_Procesos_de_Contratacion.csv'
+Traceback (most recent call last):
+  File "c:\Users\camil\mi_proyecto_secop\fase4\etl_script.py", line 204, in main
+    for i, chunk in enumerate(pd.read_csv(FILE_PATH, chunksize=CHUNK_SIZE, low_memory=False)):
+                              ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: '../SECOP_II_Procesos_de_Contratacion.csv'
+2025-09-11 19:12:02,885 - INFO - Iniciando ETL por bloques...
+2025-09-11 19:12:02,944 - ERROR - Error en el ETL: [Errno 2] No such file or directory: '../.csv'
+Traceback (most recent call last):
+  File "c:\Users\camil\mi_proyecto_secop\fase4\etl_script.py", line 204, in main
+    for i, chunk in enumerate(pd.read_csv(FILE_PATH, chunksize=CHUNK_SIZE, low_memory=False)):
+                              ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: '../.csv'
+2025-09-11 19:12:27,550 - INFO - Iniciando ETL por bloques...
+2025-09-11 19:12:27,606 - ERROR - Error en el ETL: [Errno 2] No such file or directory: './SECOP_II_Procesos_de_Contratacion.csv'
+Traceback (most recent call last):
+  File "c:\Users\camil\mi_proyecto_secop\fase4\etl_script.py", line 204, in main
+    for i, chunk in enumerate(pd.read_csv(FILE_PATH, chunksize=CHUNK_SIZE, low_memory=False)):
+                              ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\camil\mi_proyecto_secop\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: './SECOP_II_Procesos_de_Contratacion.csv'

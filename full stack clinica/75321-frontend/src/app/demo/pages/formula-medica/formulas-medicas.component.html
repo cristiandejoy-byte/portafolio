@@ -1,0 +1,175 @@
+<div class="formulas-container">
+  <div class="header">
+    <h2>Gestión de Fórmulas Médicas</h2>
+    <button class="btn-crear" (click)="abrirFormularioCrear()" *ngIf="!mostrarFormulario && !cargando">
+      ➕ Nueva Fórmula
+    </button>
+  </div>
+
+  <!-- SPINNER DE CARGA -->
+  <div *ngIf="cargando" class="spinner-overlay">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p>Cargando datos...</p>
+    </div>
+  </div>
+
+  <!-- FORMULARIO DE CREAR/EDITAR (Reactivo) -->
+  <div *ngIf="mostrarFormulario && !cargando" class="formulario-container">
+    <h3>{{ modoEdicion ? 'Editar Fórmula Médica' : 'Nueva Fórmula Médica' }}</h3>
+
+    <form [formGroup]="formularioReceta" (ngSubmit)="guardarReceta()">
+      
+      <!-- Campo: ID de Cita -->
+      <div class="form-group">
+        <label for="citaId">
+          ID de Cita Médica <span class="obligatorio">*</span>
+        </label>
+        <input 
+          type="number" 
+          id="citaId" 
+          formControlName="citaId"
+          class="form-control"
+          [class.invalid]="campoEsInvalido('citaId')"
+          placeholder="Ingrese el ID de la cita">
+        <small class="error-message" *ngIf="campoEsInvalido('citaId')">
+          {{ obtenerErrorCampo('citaId') }}
+        </small>
+        <small class="help-text" *ngIf="modoEdicion">
+          No se puede modificar la cita en modo edición
+        </small>
+      </div>
+
+      <!-- Campo: ID de Medicamento -->
+      <div class="form-group">
+        <label for="medicamentoId">
+          ID de Medicamento <span class="obligatorio">*</span>
+        </label>
+        <input 
+          type="number" 
+          id="medicamentoId" 
+          formControlName="medicamentoId"
+          class="form-control"
+          [class.invalid]="campoEsInvalido('medicamentoId')"
+          placeholder="Ingrese el ID del medicamento">
+        <small class="error-message" *ngIf="campoEsInvalido('medicamentoId')">
+          {{ obtenerErrorCampo('medicamentoId') }}
+        </small>
+      </div>
+
+      <!-- Campo: Dosis -->
+      <div class="form-group">
+        <label for="dosis">
+          Dosis <span class="obligatorio">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="dosis" 
+          formControlName="dosis"
+          class="form-control"
+          [class.invalid]="campoEsInvalido('dosis')"
+          placeholder="Ej: 1 tableta cada 8 horas"
+          maxlength="200">
+        <small class="error-message" *ngIf="campoEsInvalido('dosis')">
+          {{ obtenerErrorCampo('dosis') }}
+        </small>
+      </div>
+
+      <!-- Campo: Indicaciones -->
+      <div class="form-group">
+        <label for="indicaciones">
+          Indicaciones <span class="obligatorio">*</span>
+        </label>
+        <textarea 
+          id="indicaciones" 
+          formControlName="indicaciones"
+          class="form-control"
+          [class.invalid]="campoEsInvalido('indicaciones')"
+          placeholder="Ingrese las indicaciones para el paciente"
+          rows="4"
+          maxlength="500"></textarea>
+        <small class="error-message" *ngIf="campoEsInvalido('indicaciones')">
+          {{ obtenerErrorCampo('indicaciones') }}
+        </small>
+        <small class="char-counter">
+          {{ formularioReceta.get('indicaciones')?.value?.length || 0 }} / 500 caracteres
+        </small>
+      </div>
+
+      <!-- Botones del formulario -->
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">
+          <span *ngIf="!cargando">{{ modoEdicion ? '✓ Actualizar' : '+ Crear' }}</span>
+          <span *ngIf="cargando">Procesando...</span>
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">
+          ✖ Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- TABLA DE RECETAS -->
+  <div *ngIf="!mostrarFormulario && !cargando">
+    <div class="info-banner">
+      <span class="contador"> Total de fórmulas registradas: <strong>{{ recetas.length }}</strong></span>
+    </div>
+    
+    <div class="tabla-responsive" *ngIf="recetas.length > 0; else sinRecetas">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Medicamento</th>
+            <th>Dosis</th>
+            <th>Indicaciones</th>
+            <th>Fecha Registro</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let receta of recetas; trackBy: trackByRecetaId">
+            <td><span class="badge">{{ receta.id }}</span></td>
+            <td>
+              <div class="info-celda">
+                <strong>{{ receta.cita?.paciente?.nombre }} {{ receta.cita?.paciente?.apellido }}</strong>
+                <small>{{ receta.cita?.paciente?.tipoDocumento }}: {{ receta.cita?.paciente?.numeroDocumento }}</small>
+              </div>
+            </td>
+            <td>
+              <div class="info-celda">
+                <strong>Dr(a). {{ receta.cita?.medico?.nombres }} {{ receta.cita?.medico?.apellidos }}</strong>
+                <small>{{ receta.cita?.medico?.especializacion?.nombre }}</small>
+              </div>
+            </td>
+            <td class="text-center">
+              <span class="badge badge-secondary">ID: {{ receta.medicamentoId }}</span>
+            </td>
+            <td>{{ receta.dosis }}</td>
+            <td class="indicaciones-cell">{{ receta.indicaciones }}</td>
+            <td>{{ receta.fechaCreacionRegistro | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td class="text-center">
+              <button class="btn-accion btn-editar" (click)="editarReceta(receta)" title="Editar fórmula">
+                ✏️
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mensaje cuando no hay datos -->
+    <ng-template #sinRecetas>
+      <div class="sin-datos">
+        <div class="sin-datos-icon">📋</div>
+        <h3>No hay fórmulas médicas registradas</h3>
+        <p>Comience creando la primera fórmula médica para sus pacientes</p>
+        <button class="btn btn-primary btn-lg" (click)="abrirFormularioCrear()">
+          ➕ Crear Primera Fórmula
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

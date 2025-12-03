@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Gestión de Especializaciones</h2>
+
+  <div class="toolbar">
+    <button class="btn btn-primary" (click)="abrirCrear()">Nueva especialización</button>
+    <div class="search">
+      <input #codigoInput type="text" placeholder="Buscar por código..." />
+      <button class="btn btn-outline-secondary" (click)="buscarPorCodigo(codigoInput)">Buscar</button>
+      <button class="btn btn-link" (click)="cargarListado()">Ver todo</button>
+    </div>
+  </div>
+
+  <table class="table table-striped" *ngIf="especializaciones?.length > 0">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of especializaciones">
+        <td>{{ e.nombre }}</td>
+        <td>{{ e.codigoEspecializacion }}</td>
+        <td>{{ e.descripcion }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="abrirEditar(e)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!especializaciones || especializaciones.length === 0">No hay especializaciones disponibles.</p>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" [hidden]="!modalOpen">
+    <div class="modal">
+      <h3>{{ editMode ? 'Editar' : 'Crear' }} especialización</h3>
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input formControlName="nombre" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Código</label>
+          <input formControlName="codigoEspecializacion" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea formControlName="descripcion" class="form-control"></textarea>
+        </div>
+        <div class="actions mt-3">
+          <button class="btn btn-primary" type="submit">{{ editMode ? 'Actualizar' : 'Crear' }}</button>
+          <button class="btn btn-secondary" type="button" (click)="cerrarModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

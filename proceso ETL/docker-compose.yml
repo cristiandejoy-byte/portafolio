@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_secop_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: SECOP
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: secop_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./fase4:/app
+
+  etl:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./fase4:/app
+    environment:
+      - DB_USER=SECOP
+      - DB_PASSWORD=12345
+      - DB_NAME=secop_db
+      - DB_HOST=db
+      - DB_PORT=5432
+    restart: "no"
+
+volumes:
+  postgres_data:
