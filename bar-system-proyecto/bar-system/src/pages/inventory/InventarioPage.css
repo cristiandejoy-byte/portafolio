@@ -1,0 +1,9 @@
+.inventario-page { animation: fadeIn 0.3s ease; }
+
+.stock-fill[data-level="low"]    { background: var(--color-danger); }
+.stock-fill[data-level="medium"] { background: var(--color-warning); }
+.stock-fill[data-level="high"]   { background: var(--color-success); }
+
+tr.level-out td:first-child { border-left: 3px solid var(--color-danger); }
+tr.level-low td:first-child { border-left: 3px solid var(--color-warning); }
+tr.level-ok  td:first-child { border-left: 3px solid transparent; }

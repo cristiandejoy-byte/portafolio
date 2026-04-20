@@ -1,0 +1,131 @@
+.sede-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sede-bg { position: absolute; inset: 0; pointer-events: none; }
+.sede-bg-glow {
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sede-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  animation: slideUp 0.4s ease;
+}
+
+.sede-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sede-icon {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d0d0d;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 24px rgba(200,169,110,0.35);
+}
+
+.sede-header h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.sede-header p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.sede-header strong { color: var(--color-gold); }
+
+.sede-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sede-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.sede-card:hover {
+  border-color: var(--color-gold);
+  background: rgba(200,169,110,0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.sede-card-icon {
+  width: 48px; height: 48px;
+  background: rgba(200,169,110,0.12);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.sede-card-info { flex: 1; }
+
+.sede-card-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.sede-card-city {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.sede-card-arrow {
+  color: var(--color-text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.sede-card:hover .sede-card-arrow {
+  color: var(--color-gold);
+  transform: translateX(4px);
+}
+
+.sede-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}

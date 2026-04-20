@@ -1,0 +1,31 @@
+.auditoria-page { animation: fadeIn 0.3s ease; }
+
+.auditoria-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.auditoria-dates {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.auditoria-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.auditoria-pages {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}

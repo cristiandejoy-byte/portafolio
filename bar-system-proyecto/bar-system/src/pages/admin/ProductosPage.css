@@ -1,0 +1,8 @@
+.productos-page { animation: fadeIn 0.3s ease; }
+
+.precio-chip {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  font-weight: 500;
+}
